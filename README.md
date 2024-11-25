@@ -24,23 +24,23 @@ npx react-file-formatter src/components/Button.js
 
 ## Example 1: Format a single file
 
-- If you have a file, e.g., src/components/Button.js, and you want to format it:
-
 ```
 npx react-file-formatter src/components/Button.js
 ```
+
+- If you have a file, e.g., src/components/Button.js, and you want to format it:
 
 - This will format the file Button.js and clean up the code according to the formatting rules defined in the module.
 
 ## Example 2: Format all .js files in a directory
 
-- You can also format multiple files at once. If you want to format all .js files in a specific folder, you can use a wildcard:
-
 ```
 npx react-file-formatter src/\*_/_.js
 ```
 
-# This will format all JavaScript files in the src directory and its subdirectories.
+- You can also format multiple files at once. If you want to format all .js files in a specific folder, you can use a wildcard:
+
+- This will format all JavaScript files in the src directory and its subdirectories.
 
 ## Before Formatting
 
