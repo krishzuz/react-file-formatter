@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 const generate = require("@babel/generator").default;
-const fs = require("fs");
-const fileparser = require("./utils/fileparser");
-const json = require("./utils/custom.json");
+const { existsSync, readFileSync, writeFileSync } = require("fs");
+const fileparser = require("./fileparser");
+const json = require("./custom.json");
 const order = json.order;
 
 const [, , filePath] = process.argv;
 
 // check the file exist or not
-if (!fs.existsSync(filePath)) {
+if (!existsSync(filePath)) {
   console.error("File not found:", filePath);
   process.exit(1);
 } else {
   // read the file
-  const readFile = fs.readFileSync(filePath, "utf-8");
+  const readFile = readFileSync(filePath, "utf-8");
 
   async function callParser() {
     // parsing the file
@@ -23,7 +23,7 @@ if (!fs.existsSync(filePath)) {
 
     if (output.code) {
       // outputting the file at the same location
-      fs.writeFileSync(filePath, output.code);
+      writeFileSync(filePath, output.code);
       console.log("File formatted:", filePath);
     } else {
       console.log("Something went wrong - Please Report the issuse");

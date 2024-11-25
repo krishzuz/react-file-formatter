@@ -1,6 +1,19 @@
-node_modules/
+# Exclude test files
+tests/
+__tests__/
+*.spec.js
+
+# Exclude config files
 *.log
-*.test.js
-.npmignore
-.gitignore
+*.lock
+*.env
+*.editorconfig
+.eslint*
 .prettierrc
+
+# Exclude development tools
+node_modules/
+scripts/
+
+# Exclude unused source files
+src/
