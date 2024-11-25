@@ -1,16 +1,16 @@
 {
   "name": "react-file-formatter",
   "version": "1.0.0",
-  "main": "./bin/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
     "clean": "rm -rf node_modules && npm cache clean --force && rm -rf package-lock.json && npm install"
   },
   "bin": {
-    "react-file-formatter": "./bin/index.js"
+    "react-file-formatter": "index.js"
   },
   "files": [
-    "bin/**/*",
+    "index.js",
     "README.md",
     "package.json"
   ],
