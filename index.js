@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const generate = require("@babel/generator").default;
 const fs = require("fs");
-const fileparser = require("./fileparser.js");
-const json = require("./custom.json");
+const fileparser = require("./utils/fileparser");
+const json = require("./utils/custom.json");
 const order = json.order;
 
 const [, , filePath] = process.argv;

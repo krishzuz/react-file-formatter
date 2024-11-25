@@ -1,6 +1,6 @@
 {
   "name": "react-file-formatter",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
@@ -12,7 +12,8 @@
   "files": [
     "index.js",
     "README.md",
-    "package.json"
+    "package.json",
+    "utils"
   ],
   "keywords": [
     "react",
