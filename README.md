@@ -9,6 +9,11 @@
 You don’t need to install this package globally. You can use it directly with `npx` from the command line:
 
 ```bash
+npx react-file-formatter src/components/Button.js
+
+```
+
+```bash
 npx react-file-formatter <path-to-file-or-directory>
 
 
@@ -33,4 +38,42 @@ You can also format multiple files at once. If you want to format all .js files 
 npx react-file-formatter src/**/*.js
 
 This will format all JavaScript files in the src directory and its subdirectories.
+```
+
+## Before Formatting
+
+```import React from 'react';
+
+const Button =({label}) => {
+    const ref = useRef(null)
+    useEffect(()=>{
+        console.log("something")
+    } , [])
+    const [clicked , setClicked] = useState(false)
+  return(
+    <button ref={ref} onClick={()=> setClicked(!clicked)} className="btn">
+      {label}
+    </button>
+  )
+}
+export default Button;
+```
+
+## After Formatting
+
+```import React from 'react';
+
+const Button =({label}) => {
+    const [clicked , setClicked] = useState(false)
+    const ref = useRef(null)
+    useEffect(()=>{
+        console.log("something")
+    } , [])
+  return(
+    <button ref={ref} onClick={()=> setClicked(!clicked)} className="btn">
+      {label}
+    </button>
+  )
+}
+export default Button;
 ```
