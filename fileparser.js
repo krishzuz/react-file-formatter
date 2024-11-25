@@ -49,6 +49,20 @@ async function fileparser(readFile, order) {
             node.declarations[0].init?.type === "ArrowFunctionExpression"
           ) {
             return order.indexOf("ArrowFunctionExpression");
+          } else if (node.type === "VariableDeclaration") {
+            const declarator = node.declarations[0];
+            if (
+              declarator.init?.type === "ObjectPattern" &&
+              declarator.init.properties
+            ) {
+              const property = declarator.init;
+              if (
+                property.properties.some((p) => p.key?.name === "mutate") &&
+                declarator.init.arguments?.length
+              ) {
+                return order.indexOf("useMutation");
+              }
+            }
           }
         } else if (node.type === "FunctionDeclaration") {
           // For function declarations like `function handleClick()`
