@@ -12,35 +12,35 @@ You don’t need to install this package globally. You can use it directly with 
 
 ```bash
 npx react-file-formatter src/components/Button.js
-
 ```
 
-```bash
-npx react-file-formatter <path-to-file-or-directory>
+## Usage
 
+- You can run react-file-formatter using npx followed by the path to the file or directory you want to format.
 
-Usage
-You can run react-file-formatter using npx followed by the path to the file or directory you want to format.
+## Command Syntax:
 
-Command Syntax:
+- npx react-file-formatter <path-to-file-or-directory>
 
-npx react-file-formatter <path-to-file-or-directory>
+## Example 1: Format a single file
 
+- If you have a file, e.g., src/components/Button.js, and you want to format it:
 
-Example 1: Format a single file
-If you have a file, e.g., src/components/Button.js, and you want to format it:
-
+```
 npx react-file-formatter src/components/Button.js
-
-This will format the file Button.js and clean up the code according to the formatting rules defined in the module.
-
-Example 2: Format all .js files in a directory
-You can also format multiple files at once. If you want to format all .js files in a specific folder, you can use a wildcard:
-
-npx react-file-formatter src/**/*.js
-
-This will format all JavaScript files in the src directory and its subdirectories.
 ```
+
+- This will format the file Button.js and clean up the code according to the formatting rules defined in the module.
+
+## Example 2: Format all .js files in a directory
+
+- You can also format multiple files at once. If you want to format all .js files in a specific folder, you can use a wildcard:
+
+```
+npx react-file-formatter src/\*_/_.js
+```
+
+# This will format all JavaScript files in the src directory and its subdirectories.
 
 ## Before Formatting
 
