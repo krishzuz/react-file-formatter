@@ -1,0 +1,11 @@
+{
+  "order": [
+    "useContext",
+    "useState",
+    "useRef",
+    "function",
+    "ArrowFunctionExpression",
+    "useEffect",
+    "return"
+  ]
+}
