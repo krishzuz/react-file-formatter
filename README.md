@@ -2,6 +2,8 @@
 
 `react-file-formatter` is a command-line tool to format and standardize React code files. It helps you clean up and format your React files with ease. The module can be used via `npx`, without the need to install it globally, making it easy to use in any React project.
 
+git_url:https://github.com/krishzuz/react-file-formatter
+
 ---
 
 ## Installation
