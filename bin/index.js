@@ -1,8 +1,6 @@
 #!/usr/bin/env node
-const babel = require("@babel/core");
 const generate = require("@babel/generator").default;
 const fs = require("fs");
-const { type } = require("os");
 const fileparser = require("./utils/fileparser.js");
 const json = require("./custom.json");
 const order = json.order;
@@ -31,6 +29,5 @@ if (!fs.existsSync(filePath)) {
       console.log("Something went wrong - Please Report the issuse");
     }
   }
-
   callParser();
 }

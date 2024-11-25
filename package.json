@@ -3,25 +3,29 @@
   "version": "1.0.0",
   "main": "./bin/index.js",
   "scripts": {
-    "dev": "nodemon ./bin/index.js"
+    "dev": "nodemon index.js",
+    "clean": "rm -rf node_modules && npm cache clean --force && rm -rf package-lock.json && npm install"
   },
   "bin": {
     "react-file-formatter": "./bin/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "files": [
+    "bin/**/*",
+    "README.md",
+    "package.json"
+  ],
+  "keywords": [
+    "react",
+    "formatter",
+    "cli"
+  ],
+  "author": "Kishore",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3"
   },
-  "files": [
-    "bin/",
-    "README.md",
-    "package.json",
-    "./bin/index.js"
-  ],
   "dependencies": {
     "@babel/core": "^7.26.0",
     "@babel/generator": "^7.26.2",
