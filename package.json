@@ -9,7 +9,7 @@
     "build": "webpack"
   },
   "bin": {
-    "react-file-formatter": "./dist/src/index.js"
+    "react-file-formatter": "dist/src/index.js"
   },
   "browser": {
     "fs": false,
