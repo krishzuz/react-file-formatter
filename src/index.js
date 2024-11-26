@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const generate = require("@babel/generator").default;
 const { existsSync, readFileSync, writeFileSync } = require("fs");
-const fileparser = require("./fileparser");
-const json = require("../utils/custom.json");
-const order = json.order;
+const parser = require("@babel/parser").parse;
+const traverse = require("@babel/traverse").default;
+const { getOrderIndex } = require("../utils/filterlogic");
 
 const [, , filePath] = process.argv;
 
@@ -17,7 +17,7 @@ if (!existsSync(filePath)) {
 
   async function callParser() {
     // parsing the file
-    const ast = await fileparser(readFile, order);
+    const ast = await fileparser(readFile);
 
     const output = generate(ast);
 
@@ -30,4 +30,31 @@ if (!existsSync(filePath)) {
     }
   }
   callParser();
+}
+
+/**
+ * Sorts the function body based on the custom order specified in the `order` array.
+ *
+ * @param {string} readFile - The string to parse.
+ * @param {Array} order - The custom order to sort the function body.
+ * @return {Object} - The parsed Abstract Syntax Tree (AST).
+ */
+async function fileparser(readFile) {
+  const result = parser(readFile, {
+    sourceType: "module",
+    plugins: ["jsx", "typescript"],
+  });
+
+  traverse(result, {
+    FunctionDeclaration(path) {
+      const body = path.node.body.body;
+      body.sort((a, b) => getOrderIndex(a) - getOrderIndex(b));
+    },
+    ArrowFunctionExpression(path) {
+      const body = path.node.body.body;
+      body.sort((a, b) => getOrderIndex(a) - getOrderIndex(b));
+    },
+  });
+
+  return result;
 }
