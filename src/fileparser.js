@@ -1,4 +1,4 @@
-const parser = require("@babel/parser");
+const parser = require("@babel/parser").parse;
 const { getOrderIndex } = require("../utils/filterlogic");
 const traverse = require("@babel/traverse").default;
 
@@ -10,7 +10,7 @@ const traverse = require("@babel/traverse").default;
  * @return {Object} - The parsed Abstract Syntax Tree (AST).
  */
 async function fileparser(readFile) {
-  const result = parser.parse(readFile, {
+  const result = parser(readFile, {
     sourceType: "module",
     plugins: ["jsx", "typescript"],
   });
