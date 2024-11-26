@@ -2,87 +2,76 @@ const parser = require("@babel/parser");
 const traverse = require("@babel/traverse").default;
 
 /**
- * Sorts the function body based on the custom order specified in the `order`
- * array.
- *
- * The custom order is as follows:
- *
- * 1. `return`
- * 2. Direct hook calls like `useEffect`
- * 3. Hook assignments like `const [state, setState] = useState()`
- * 4. Function declarations like `function handleClick()`
- * 5. Arrow function declarations like `const handleClick = () => {}`
+ * Sorts the function body based on the custom order specified in the `order` array.
  *
  * @param {string} readFile - The string to parse.
  * @param {Array} order - The custom order to sort the function body.
  * @return {Object} - The parsed Abstract Syntax Tree (AST).
  */
 async function fileparser(readFile, order) {
-  // parsing technique
-  const ast = parser.parse(readFile, {
+  const result = parser.parse(readFile, {
     sourceType: "module",
-    // support jsx and tsx
     plugins: ["jsx", "typescript"],
   });
 
-  traverse(ast, {
+  traverse(result, {
     FunctionDeclaration(path) {
-      const { body } = path.node.body;
+      const body = path.node.body.body;
 
+      // Helper function to determine the order of a node
       const getOrderIndex = (node) => {
         if (node.type === "ReturnStatement") {
           return order.indexOf("return");
-        } else if (
+        }
+
+        if (
           node.type === "ExpressionStatement" &&
           node.expression.type === "CallExpression"
         ) {
-          // For direct hook calls like `useEffect`
+          // Direct hook calls like `useEffect`, `useContext`
           const callee = node.expression.callee.name;
-          return order.indexOf(callee);
-        } else if (node.type === "VariableDeclaration") {
-          // For hook assignments like `const [state, setState] = useState()`
+          return order.indexOf(callee) !== -1 ? order.indexOf(callee) : -1;
+        }
+
+        if (node.type === "VariableDeclaration") {
           const declarator = node.declarations[0];
-          if (declarator.init && declarator.init.type === "CallExpression") {
+          if (declarator.init?.type === "CallExpression") {
+            // Hook assignments like `const [state, setState] = useState()`
             const callee = declarator.init.callee.name;
-            return order.indexOf(callee);
-          } else if (
-            node.declarations[0].init?.type === "ArrowFunctionExpression"
-          ) {
+            return order.indexOf(callee) !== -1 ? order.indexOf(callee) : -1;
+          }
+
+          if (declarator.init?.type === "ArrowFunctionExpression") {
+            // Arrow functions
             return order.indexOf("ArrowFunctionExpression");
-          } else if (node.type === "VariableDeclaration") {
-            const declarator = node.declarations[0];
+          }
+
+          if (declarator.init?.type === "ObjectPattern") {
+            // Destructuring hooks, like `const { mutate } = useMutation()`
+            const properties = declarator.init.properties || [];
             if (
-              declarator.init?.type === "ObjectPattern" &&
-              declarator.init.properties
+              properties.some((prop) => prop.key.name === "mutate") &&
+              declarator.init.arguments?.length
             ) {
-              const property = declarator.init;
-              if (
-                property.properties.some((p) => p.key?.name === "mutate") &&
-                declarator.init.arguments?.length
-              ) {
-                return order.indexOf("useMutation");
-              }
+              return order.indexOf("useMutation");
             }
           }
-        } else if (node.type === "FunctionDeclaration") {
-          // For function declarations like `function handleClick()`
-          return order.indexOf("function");
-        } else if (
-          node.type === "VariableDeclaration" &&
-          node.declarations[0].init?.type === "ArrowFunctionExpression"
-        ) {
-          // For arrow function declarations like `const handleClick = () => {}`
-          console.log("called arrow");
-          return order.indexOf("ArrowFunctionExpression");
         }
+
+        if (node.type === "FunctionDeclaration") {
+          // Named function declarations
+          return order.indexOf("function");
+        }
+
         return -1; // Default for unhandled nodes
       };
+
       // Sort the function body based on the custom order
       body.sort((a, b) => getOrderIndex(a) - getOrderIndex(b));
     },
   });
 
-  return ast;
+  return result;
 }
 
 module.exports = fileparser;
