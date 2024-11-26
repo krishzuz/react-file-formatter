@@ -3,7 +3,7 @@
   "version": "1.1.2",
   "main": "./src/index.js",
   "scripts": {
-    "clean": "rm -rf node_modules && npm cache clean --force && rm -rf package-lock.json && npm install",
+    "clean": "rm -rf node_modules && npm cache clean --force && rm -rf package-lock.json && rm -rf dist && npm install",
     "run": "npm pack --dry-run",
     "pub": "npm publish",
     "build": "webpack"
@@ -29,7 +29,7 @@
     "formatter",
     "cli"
   ],
-  "author": "Kishore",
+  "author": "krishzuz",
   "license": "ISC",
   "description": "",
   "dependencies": {
@@ -38,15 +38,10 @@
     "@babel/traverse": "^7.25.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/npm": "^12.0.1",
     "babel-loader": "^9.2.1",
     "glob": "^11.0.0",
     "prettier": "^3.3.3",
-    "semantic-release": "^24.2.0",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4"
   }
