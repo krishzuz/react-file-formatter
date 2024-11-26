@@ -19,7 +19,8 @@
   "files": [
     "README.md",
     "package.json",
-    "dist"
+    "src/index.js",
+    "utils"
   ],
   "publishConfig": {
     "access": "public"
