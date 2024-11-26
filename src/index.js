@@ -4,6 +4,8 @@ const { existsSync, readFileSync, writeFileSync } = require("fs");
 const parser = require("@babel/parser").parse;
 const traverse = require("@babel/traverse").default;
 const { getOrderIndex } = require("../utils/filterlogic");
+const { type } = require("os");
+const { isArray } = require("util");
 
 const [, , filePath] = process.argv;
 
@@ -36,7 +38,6 @@ if (!existsSync(filePath)) {
  * Sorts the function body based on the custom order specified in the `order` array.
  *
  * @param {string} readFile - The string to parse.
- * @param {Array} order - The custom order to sort the function body.
  * @return {Object} - The parsed Abstract Syntax Tree (AST).
  */
 async function fileparser(readFile) {
@@ -51,8 +52,11 @@ async function fileparser(readFile) {
       body.sort((a, b) => getOrderIndex(a) - getOrderIndex(b));
     },
     ArrowFunctionExpression(path) {
-      const body = path.node.body.body;
-      body.sort((a, b) => getOrderIndex(a) - getOrderIndex(b));
+      const { body } = path.node;
+      // Check if the body is a block statement
+      if (body.type === "BlockStatement" && Array.isArray(body.body)) {
+        body.body.sort((a, b) => getOrderIndex(a) - getOrderIndex(b));
+      }
     },
   });
 
