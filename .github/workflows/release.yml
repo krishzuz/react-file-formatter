@@ -19,6 +19,9 @@ jobs:
 
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+      - name: Debugging step
+        run: |
+          echo "Token is being passed: ${{ secrets.GH_TOKEN }}"
       - name: Run Semantic Release
         run: npx semantic-release
       - name: Publish
