@@ -8,5 +8,6 @@
     "ArrowFunctionExpression",
     "useEffect",
     "return"
-  ]
+  ],
+  "test": []
 }
