@@ -15,7 +15,8 @@
     "README.md",
     "package.json",
     "fileparser.js",
-    "custom.json"
+    "custom.json",
+    "utils"
   ],
   "keywords": [
     "react",
