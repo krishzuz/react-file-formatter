@@ -19,7 +19,8 @@ jobs:
 
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-
+      - name: Run Semantic Release
+        run: npx semantic-release
       - name: Publish
         run: npm publish
         env:
