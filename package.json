@@ -1,23 +1,29 @@
 {
   "name": "react-file-formatter",
-  "version": "1.1.1",
-  "main": "index.js",
+  "version": "0.0.0-development",
+  "main": "./src/index.js",
   "scripts": {
     "clean": "rm -rf node_modules && npm cache clean --force && rm -rf package-lock.json && npm install",
     "run": "npm pack --dry-run",
-    "pub": "npm publish"
+    "pub": "npm publish",
+    "build": "webpack"
   },
   "bin": {
-    "react-file-formatter": "index.js"
+    "react-file-formatter": "./dist/src/index.js"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   },
   "files": [
-    "index.js",
     "README.md",
     "package.json",
-    "fileparser.js",
-    "custom.json",
-    "utils"
+    "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "react",
     "formatter",
@@ -32,6 +38,13 @@
     "@babel/traverse": "^7.25.9"
   },
   "devDependencies": {
-    "prettier": "^3.3.3"
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "babel-loader": "^9.2.1",
+    "glob": "^11.0.0",
+    "prettier": "^3.3.3",
+    "semantic-release": "^24.2.0",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
   }
 }

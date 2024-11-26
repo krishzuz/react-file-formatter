@@ -2,7 +2,7 @@
 const generate = require("@babel/generator").default;
 const { existsSync, readFileSync, writeFileSync } = require("fs");
 const fileparser = require("./fileparser");
-const json = require("./custom.json");
+const json = require("../utils/custom.json");
 const order = json.order;
 
 const [, , filePath] = process.argv;

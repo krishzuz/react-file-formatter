@@ -1,5 +1,5 @@
 const parser = require("@babel/parser");
-const { getOrderIndex } = require("./utils/filterlogic");
+const { getOrderIndex } = require("../utils/filterlogic");
 const traverse = require("@babel/traverse").default;
 
 /**

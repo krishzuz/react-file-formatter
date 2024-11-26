@@ -1,4 +1,4 @@
-const order = require("../custom.json").order;
+const order = require("./custom.json").order;
 const getOrderIndex = (node) => {
   if (node.type === "ReturnStatement") {
     return order.indexOf("return");
