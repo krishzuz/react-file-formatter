@@ -14,24 +14,24 @@ If you find any issues kindly reachout! or create a issue in github repo.
 npm i react-file-formatter -g
 ```
 
-## Problem We Are Solving
+# Problem We Are Solving
 
 In React projects, it's common to use multiple hooks and functions in a single file. Over time, this can lead to disorganized and hard-to-read code. react-file-formatter solves this by automatically:
 
-- # Reordering Code for Readability and Cleanliness:
+- ## Reordering Code for Readability and Cleanliness:
 
   The tool automatically sorts hooks, functions, and return statements based on a custom order, making the code more consistent and easier to understand.
 
-- # Integrating Prettier for Code Formatting:
+- ## Integrating Prettier for Code Formatting:
   In addition to reordering, the tool also formats the code using Prettier, ensuring consistent formatting across your project. This eliminates the need to worry about inconsistent indentation, quotes, and other formatting issues.
 
-## Features
+# Features
 
 - Customizable Ordering: Define your preferred order of hooks and functions in a simple JSON file.
 - Prettier Integration: Automatically format your code according to your Prettier configuration.
 - CLI Tool: Easily use the tool from the command line to format your files.
 
-## How to Use
+# How to Use
 
 Install globally or project specify
 
@@ -41,7 +41,7 @@ npm install -g react-file-formatter
 npm install react-file-formatter
 ```
 
-## Create a Custom JSON Configuration File:
+# Create a Custom JSON Configuration File:
 
 Create a `custom.json` file in the project root and define the order and Prettier settings.
 Example of `custom.json`.
@@ -68,19 +68,19 @@ Example of `custom.json`.
 
 ```
 
-# Example 1: Format a single file with default configuration
+## Example 1: Format a single file with default configuration
 
 ```
 npx react-file-formatter <file-path>
 ```
 
-# Example 2: Format a single file with custom configuration
+## Example 2: Format a single file with custom configuration
 
 ```
 npx react-file-formatter <file-path> <custom.json-path>
 ```
 
-# Example 3: If Globally Insatalled
+## Example 3: If Globally Insatalled
 
 ```
 react-file-formatter <path-to-file>
@@ -90,7 +90,7 @@ react-file-formatter <path-to-file>
 
 - This will format the file Button.js and clean up the code according to the formatting rules defined in the module.
 
-# Files can be formatted using this plugin
+## Files can be formatted using this plugin
 
 - JSX, TSX files
 - React custom hook/hook {ts,js} files
