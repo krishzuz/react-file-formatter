@@ -1,45 +1,86 @@
-name: Release and Publish
+# name: Release and Publish
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   release:
+#     types: [created]
+
+# jobs:
+#   release:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#         with:
+#           fetch-depth: 0
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: 20
+#       - run: npm ci
+#       - run: npm pack --dry-run
+
+#       - name: Authenticate with npm
+#         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+#       - name: Publish to npm
+#         run: npm publish
+#         env:
+#           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+#   publish-gpr:
+#     needs: release
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: read
+#       packages: write
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-node@v4
+#         with:
+#           node-version: 20
+#           registry-url: https://npm.pkg.github.com/
+#       - run: npm ci
+#       - run: npm publish
+#         env:
+#           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+name: Publish to npm and GitHub Packages
 
 on:
-  push:
-    branches:
-      - main
   release:
     types: [created]
 
 jobs:
-  release:
+  publish:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm pack --dry-run
 
-      - name: Authenticate with npm
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-      - name: Publish to npm
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Run tests (optional, you can skip if not needed)
+      - name: Run tests
+        run: npm test
+
+      # Publish to GitHub Packages
+      - name: Publish to GitHub Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-  publish-gpr:
-    needs: release
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
+      # Publish to npm
+      - name: Publish to npm
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --registry https://registry.npmjs.org/
