@@ -4,8 +4,13 @@
   "main": "./src/index.js",
   "scripts": {
     "clean": "rm -rf node_modules && npm cache clean --force && rm -rf package-lock.json && rm -rf dist && npm install",
-    "run": "npm pack --dry-run",
-    "pub": "npm publish"
+    "dry": "npm pack --dry-run",
+    "publish": "npm publish",
+    "release": "npm pack",
+    "format": "prettier --write .",
+    "lint": "prettier --check .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm pack"
   },
   "bin": {
     "react-file-formatter": "src/index.js"
@@ -22,7 +27,8 @@
     "utils"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",
@@ -32,10 +38,14 @@
     "react",
     "formatter",
     "cli",
-    "react-query"
+    "file-formatter",
+    "formatting",
+    "react-file-formatter",
+    "format",
+    "prettier"
   ],
   "author": "krishzuz",
-  "license": "MIT",
+  "license": "ISC",
   "description": "react-file-formatter is a command-line tool to format and standardize React code files. It helps you clean up and format your React files with ease.",
   "devDependencies": {
     "prettier": "^3.3.3"
