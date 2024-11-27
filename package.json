@@ -45,7 +45,7 @@
     "prettier"
   ],
   "author": "krishzuz",
-  "license": "MIT",
+  "license": "ISC",
   "description": "react-file-formatter is a command-line tool to format and standardize React code files. It helps you clean up and format your React files with ease.",
   "devDependencies": {
     "prettier": "^3.3.3"
