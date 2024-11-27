@@ -37,7 +37,9 @@ Install globally or project specify
 
 ```
 npm install -g react-file-formatter
+```
 
+```
 npm install react-file-formatter
 ```
 
