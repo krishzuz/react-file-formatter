@@ -1,4 +1,5 @@
 {
+  "content": ["./src"],
   "order": [
     "useContext",
     "useState",
