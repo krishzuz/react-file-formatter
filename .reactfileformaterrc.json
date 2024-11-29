@@ -1,0 +1,19 @@
+{
+  "content": ["./src", "./utils"],
+  "order": [
+    "useContext",
+    "useState",
+    "useRef",
+    "useMutation",
+    "function",
+    "ArrowFunctionExpression",
+    "useEffect",
+    "return"
+  ],
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "singleQuote": true,
+    "semi": true
+  }
+}
