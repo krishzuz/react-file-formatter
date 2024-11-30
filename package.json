@@ -1,6 +1,6 @@
 {
   "name": "react-file-formatter",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "main": "./src/index.js",
   "scripts": {
     "clean": "rm -rf node_modules && npm cache clean --force && rm -rf package-lock.json && rm -rf dist && npm install",
@@ -27,8 +27,7 @@
     "utils"
   ],
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -45,14 +44,12 @@
     "prettier"
   ],
   "author": "krishzuz",
-  "license": "ISC",
+  "license": "MIT",
   "description": "react-file-formatter is a command-line tool to format and standardize React code files. It helps you clean up and format your React files with ease.",
-  "devDependencies": {
-    "prettier": "^3.3.3"
-  },
   "dependencies": {
     "@babel/generator": "^7.26.2",
     "@babel/parser": "^7.26.2",
-    "@babel/traverse": "^7.25.9"
+    "@babel/traverse": "^7.25.9",
+    "prettier": "^3.4.1"
   }
 }

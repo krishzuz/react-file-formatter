@@ -1,5 +1,5 @@
 {
-  "content": ["./src"],
+  "content": ["./src", "./utils"],
   "order": [
     "useContext",
     "useState",

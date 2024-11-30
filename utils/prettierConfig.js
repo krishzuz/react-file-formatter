@@ -1,5 +1,4 @@
 const prettier = require('prettier');
-
 async function formatAndAddSpaces(rawCode, configJSON) {
   const prettierConfig = {
     ...configJSON,
@@ -26,5 +25,6 @@ async function formatAndAddSpaces(rawCode, configJSON) {
     console.error('Error formatting the code:', error);
   }
 }
-
-module.exports = { formatAndAddSpaces };
+module.exports = {
+  formatAndAddSpaces,
+};
