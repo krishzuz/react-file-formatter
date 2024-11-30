@@ -1,6 +1,6 @@
 {
   "name": "react-file-formatter",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "main": "./src/index.js",
   "scripts": {
     "clean": "rm -rf node_modules && npm cache clean --force && rm -rf package-lock.json && rm -rf dist && npm install",
@@ -23,7 +23,7 @@
   "files": [
     "README.md",
     "package.json",
-    "src/index.js",
+    "src",
     "utils"
   ],
   "publishConfig": {
