@@ -147,4 +147,4 @@ Feel free to contribute to the project! To get started, fork the repository, mak
 
 ## License
 
-This project is licensed under the ISC License.
+This project is licensed under the MIT License.
