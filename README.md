@@ -110,10 +110,24 @@ npx react-file-formatter --format-all
 This command will check the `.reactfileformaterrc.json` configuration file and excute the formatting process only to
 the folder paths which is mentioned in the `content` property.
 
+## List of commands:
+
+| Command                    | Flags           |
+|----------------------------|-----------------|
+| npx react-file-formatter   | --format-all    |
+| npx react-file-formatter   | --format-jsx    |
+| npx react-file-formatter   | --format-tsx    |
+| npx react-file-formatter   | --format-js     |
+| npx react-file-formatter   | --format-ts     | 
+
+If it is a react component it will apply reordering else it will apply the prettier rules which is specified.
+
+
 ## Files can be formatted using this plugin
 
 - JSX, TSX files
 - React custom hook/hook {ts,js} files
+- .js, .ts
 
 ## Before Formatting
 
