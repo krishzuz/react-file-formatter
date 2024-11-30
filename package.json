@@ -1,6 +1,6 @@
 {
   "name": "react-file-formatter",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "main": "./src/index.js",
   "scripts": {
     "clean": "rm -rf node_modules && npm cache clean --force && rm -rf package-lock.json && rm -rf dist && npm install",
