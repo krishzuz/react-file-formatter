@@ -8,7 +8,11 @@ If you find any issues kindly reachout! or create a issue in github repo.
 
 ## Installation
 
-<!-- You don’t need to install this package globally. You can use it directly with `npx` from the command line: -->
+You don’t need to install this package globally. You can use it directly with `npx` from the command line:
+
+```
+npx react-file-formatter --format-all
+```
 
 ```bash
 npm i react-file-formatter -g
@@ -33,7 +37,11 @@ In React projects, it's common to use multiple hooks and functions in a single f
 
 # How to Use
 
-Install globally or project specify
+Install globally or project specify or just run the command
+
+```
+npx react-file-formatter --format-all
+```
 
 ```
 npm install -g react-file-formatter
@@ -43,13 +51,14 @@ npm install -g react-file-formatter
 npm install react-file-formatter
 ```
 
-# Create a Custom JSON Configuration File:
+# .reactfileformaterrc.json JSON Configuration File:
 
-Create a `custom.json` file in the project root and define the order and Prettier settings.
-Example of `custom.json`.
+.reactfileformaterrc.json file will be created automatically in the root of your project. Where you can modify and configure code based on
+your project needs. NOTE: content property is important to format the code files. Make sure it exists!
 
 ```
 {
+  "content": ["./src", "./utils"],
   "order": [
     "useContext",
     "useState",
@@ -91,6 +100,15 @@ react-file-formatter <path-to-file>
 - If you have a file, e.g., src/components/Button.js, and you want to format it:
 
 - This will format the file Button.js and clean up the code according to the formatting rules defined in the module.
+
+## Example 4: Formatting all files
+
+```
+npx react-file-formatter --format-all
+```
+
+This command will check the `.reactfileformaterrc.json` configuration file and excute the formatting process only to
+the folder paths which is mentioned in the `content` property.
 
 ## Files can be formatted using this plugin
 
