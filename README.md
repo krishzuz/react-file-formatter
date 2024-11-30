@@ -1,4 +1,4 @@
-# react-file-formatter 🚀
+# react-file-formatter ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg) ![npm version](https://img.shields.io/badge/npm-v1.1.8)
 
 `react-file-formatter` is a command-line tool designed to help React developers standardize and clean up their React code files for improved readability and maintainability. The tool automatically formats your React code and allows you to reorder functions and hooks based on a custom order specified by the user.
 
